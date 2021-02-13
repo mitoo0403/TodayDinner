@@ -1,0 +1,9 @@
+<%= form_with(url: hoge, local: true, method: :get, class: "search-form") do |form| %>
+  <%= form.text_field :keyword, placeholder: "料理を検索する", class: "search-input" %>
+  <%= form.submit "検索", class: "search-btn" %>
+<% end %>
+<div class="contents row">
+  <% @movies.each do |movie| %>
+    <%= render partial: "movie", locals: { movie: movie } %>
+  <% end %>
+</div>
