@@ -37,7 +37,7 @@ class MoviesController < ApplicationController
 
   private
   def movie_params
-    params.require(:movie).permit(:image, :name).merge(user_id: current_user.id)
+    params.require(:movie).permit(:movie, :image, :name, :cateory_id, :time_id).merge(user_id: current_user.id)
   end
 
   def set_tweet
