@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
 
   before_action :set_movie, only:[:edit, :show]
-  before_action :move_to_index, except: [:index, :show, :search]
+  # before_action :move_to_index, except: [:index, :show, :search]
 
   def index
     @movies = Movie.includes(:user).order("created_at DESC")
@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-    movie = Mpvie.find(params[:id])
+    movie = Movie.find(params[:id])
     movie.destroy
   end
 

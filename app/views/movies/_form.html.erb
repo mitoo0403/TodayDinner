@@ -1,7 +1,9 @@
-      <%= f.file_field :image, id:"item-image" %>
+<%= form_with(model: @movie, local: true) do |f| %>
+      <%= f.file_field :image, id:"cook-image" %>
       <%= f.file_field :movie, class:"movie-image", placeholder: "movie Url" %>
-      <%= f.text_area :name, class:"movies-text", id:"movie-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+      <%= f.text_area :name, class:"movies-text", id:"movie-name", placeholder:"料理名（必須 40文字まで)", maxlength:"40" %>
       <%= f.text_area :explanation, class:"movies-text", id:"movie-info", placeholder:"料理の説明（必須 1,000文字まで)", rows:"7" ,maxlength:"1000" %>
       <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"cook-category"}) %>
-      <%= f.collection_select(:time_id, Time.all, :id, :name, {}, {class:"select-box", id:"cook-time"}) %>
-      <%= form.submit "SEND" %>
+      <%= f.collection_select(:time_required_id, TimeRequired.all, :id, :name, {}, {class:"select-box", id:"cook-time"}) %>
+      <%= f.submit "料理を投稿する" %>
+<% end %>

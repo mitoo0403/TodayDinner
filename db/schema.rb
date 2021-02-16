@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2021_02_13_072252) do
     t.text "explanation"
     t.text "image"
     t.integer "category_id"
-    t.integer "time_id"
+    t.integer "time_required_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

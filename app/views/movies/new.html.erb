@@ -1,8 +1,8 @@
 <div class="contents row">
   <div class="container">
     <%= form_with(model: @movie, local: true) do |movie| %>
-      <h3>投稿する</h3>
-      <%= render partial: "form", locals: { form: form } %>
+      <h3>料理を投稿する</h3>
+      <%= render partial: "form", locals: { movie: @movie } %>
     <% end %>
   </div>
 </div>
