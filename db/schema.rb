@@ -36,9 +36,9 @@ ActiveRecord::Schema.define(version: 2021_02_13_072252) do
   create_table "movies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.text "explanation"
-    t.text "image"
     t.integer "category_id"
     t.integer "time_required_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

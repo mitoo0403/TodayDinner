@@ -1,6 +1,8 @@
 class MoviesController < ApplicationController
 
+  before_action :authenticate_user!, only: [:new, :create, :destroy]
   before_action :set_movie, only:[:edit, :show]
+  before_action :movie_find, only: [:edit, :update, :destroy, :show]
   # before_action :move_to_index, except: [:index, :show, :search]
 
   def index
@@ -12,11 +14,15 @@ class MoviesController < ApplicationController
   end
     
   def create
-    Movie.create(movie_params)
+    @movie = Movie.new(movie_params)
+    if @movie.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def destroy
-    movie = Movie.find(params[:id])
     movie.destroy
   end
 
@@ -24,7 +30,6 @@ class MoviesController < ApplicationController
   end
 
   def update
-    movie = Movie.find(params[:id])
     movie.update(movie_params)
   end
 
@@ -37,7 +42,7 @@ class MoviesController < ApplicationController
 
   private
   def movie_params
-    params.require(:movie).permit(:movie, :image, :name, :cateory_id, :time_id).merge(user_id: current_user.id)
+    params.require(:movie).permit(:image, :video, :name, :explanation, :category_id, :time_required_id).merge(user_id: current_user.id)
   end
 
   def set_tweet
@@ -49,4 +54,9 @@ class MoviesController < ApplicationController
       redirect_to action: :index
     end
   end
+
+  def movie_find
+    @movie = Movie.find(params[:id])
+  end
+
 end
