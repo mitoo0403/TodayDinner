@@ -12,11 +12,11 @@ class Movie < ApplicationRecord
     validates :time_required_id
   end
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
   # has_many :comments
   has_one_attached :image
   has_one_attached :video
   belongs_to :user
-  belongs_to :category
-  belongs_to :time_required
-
+  belongs_to_active_hash :category
+  belongs_to_active_hash :time_required
 end

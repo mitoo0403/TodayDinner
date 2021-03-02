@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
   def new
     @movie = Movie.new
   end
-    
+
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
@@ -46,7 +46,7 @@ class MoviesController < ApplicationController
   end
 
   def set_tweet
-    @movie = Movie.find(params[:id]) 
+    @movie = Movie.find(params[:id])
   end
 
   def move_to_index
